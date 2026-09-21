@@ -2,16 +2,16 @@ package lw01.prelab;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         List<PrintJob> jobs = new ArrayList<>();
 
-        try (Scanner sc = new Scanner(new File("lw01/prelab/jobs.txt"))) {
+        try (Scanner sc = new Scanner(new File("jobs.txt"))) {
             while (sc.hasNext()) {
                 String type = sc.next();
                 String id = sc.next();
