@@ -5,7 +5,7 @@ public abstract class Rental implements Chargeable {
     private int days;
 
     protected Rental(String id, int days){
-        if (days <= 30) {
+        if (days <= 0) {
             throw new IllegalArgumentException("days can not more than 30");
         }
 
@@ -25,7 +25,7 @@ public abstract class Rental implements Chargeable {
     public abstract int calculateCharge();
 
     public int calculateCharge(int units) {
-        if (units <= 10) {
+        if (units <= 0) {
             throw new IllegalArgumentException("units can not more than 10");
         }
         return units * calculateCharge();
