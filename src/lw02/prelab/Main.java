@@ -16,12 +16,12 @@ public class Main {
 
         Stack<String[]> failedTransactions = new Stack<>();
 
-        Scanner sc = new Scanner(Main.class.getResourceAsStream("transaction.txt"));
+        Scanner sc = new Scanner(Main.class.getResourceAsStream("transactions.txt"));
 
         while(sc.hasNext()) {
             String name = sc.next();
             String type = sc.next();
-            String amount = sc.next();
+            int amount = sc.nextInt();
 
             // memasukkan transaksi menjadi array string ke linkedlist
             transactions.add(new String[]{name, type, String.valueOf(amount)});
@@ -75,7 +75,7 @@ public class Main {
                     targetedCust[1] = String.valueOf(currentBalance); // simpan saldo baru
                 } else if(type.equalsIgnoreCase("WITHDRAW")) {
                     if(amount > currentBalance) { // cek apakah saldo mencukupi
-                        failedTransactions.add(trx); // kalo gagal masukin ke stack
+                        failedTransactions.push(trx); // kalo gagal masukin ke stack
                     } else {
                         currentBalance -= amount;
                         targetedCust[1] = String.valueOf(currentBalance);
@@ -85,7 +85,7 @@ public class Main {
         }
 
         // menampilkan transaksi berhasil berdasarkan urutan pertama kali terdaftar
-        System.out.println("=== Final Balance ===");
+        System.out.println("=== Final Balances ===");
         for(String[] cust : customers) {
             System.out.println(cust[0] + ": " + cust[1]);
         }
